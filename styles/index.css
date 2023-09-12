@@ -1,2 +1,588 @@
 @import './_reset.css';
 @import './_base.css';
+
+@font-face {
+  font-family: Montserrat;
+  src: url('/assets/fonts/Montserrat-VariableFont_wght.ttf');
+}
+
+:root {
+  --gray-1: #333;
+  --gray-2: #4f4f4f;
+  --gray-3: #828282;
+  --gray-4: #bdbdbd;
+  --gray-5: #dfdfdf;
+  --gray-6: #f2f2f2;
+  --orange: #f2994a;
+}
+
+input[type='checkbox'] {
+  visibility: hidden;
+}
+
+input[type='number'] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.title {
+  font-size: 1.125rem;
+  word-wrap: break-word;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.main-container {
+  margin: 4rem auto 1.5rem auto;
+
+  display: flex;
+  flex-direction: column;
+
+  color: var(--gray-1);
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: normal;
+}
+
+.header {
+  margin-bottom: 3.1875rem;
+}
+
+.header .title {
+  color: #4e5150;
+  font-size: 36px;
+}
+
+.main {
+  margin-bottom: 9.9375rem;
+}
+
+.main .form {
+  display: flex;
+  gap: 7.0625rem;
+}
+
+.main h2.title {
+  margin-bottom: 0.9375rem;
+}
+
+.contact-info,
+.shipping-address {
+  width: 29.0625rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.shipping-address {
+  margin-top: 2.375rem;
+}
+
+.main .custom-field {
+  margin-bottom: 1.25rem;
+  width: 29.0625rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.main .custom-field:has(#address),
+.main .custom-field:has(#city) {
+  margin-bottom: 0.8125rem;
+}
+
+.main .custom-field:has(#country),
+.main .custom-field:has(#postal-code) {
+  width: 13.5625rem;
+}
+
+.main .custom-field label {
+  margin-bottom: 0.4375rem;
+  color: var(--gray-2);
+  font-size: 0.75rem;
+  word-wrap: break-word;
+}
+
+.contact-info .custom-field label,
+.shipping-address .custom-field label {
+  margin-left: 1px;
+}
+
+.main .custom-field div {
+  padding: 0 0.75rem;
+  flex-shrink: 0;
+  /* width: 100%; */
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  border-radius: 0.75rem;
+  border: 1px solid var(--gray-3);
+  color: var(--gray-1);
+  box-sizing: border-box;
+}
+
+.main .custom-field i {
+  margin: 1rem 1rem 1rem 0;
+  color: var(--gray-3);
+}
+
+.main .custom-field i.arrow-down,
+.main .custom-field i.add,
+.main .custom-field i.remove {
+  border-radius: 0.25rem;
+  background: var(--gray-5);
+}
+
+.main .custom-field i.arrow-down {
+  margin: 1.0625rem auto 0.9375rem auto;
+  position: absolute;
+  right: 0.625rem;
+  z-index: -1;
+}
+
+.main .custom-field input,
+.main .custom-field select {
+  padding: 0;
+  width: 100%;
+  border: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  font: inherit;
+  background: transparent;
+}
+
+.main .custom-field input::placeholder {
+  color: var(--gray-3);
+}
+
+.main .custom-select div {
+  padding-right: 0.25rem;
+}
+
+.main .custom-select select {
+  height: 2rem;
+  color: var(--gray-3);
+}
+
+.main .custom-select select:valid {
+  color: var(--gray-1);
+}
+
+.main .custom-select:has(select:hover) i.arrow-down {
+  color: white;
+  background: var(--orange);
+
+  transition: all 0.25s;
+}
+
+.main label:has(> input#saving-for-next) {
+  margin-bottom: 1.25rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: var(--gray-2);
+  font-size: 0.75rem;
+}
+
+.main label:has(> input#saving-for-next) .box {
+  margin-right: 0.6875rem;
+  width: 1.3125rem;
+  height: 1.3125rem;
+  border: 1px solid var(--gray-3);
+  border-radius: 0.25rem;
+}
+
+.main label:has(> input#saving-for-next:hover) .box {
+  background: var(--gray-6);
+  transition: all 0.25s;
+}
+
+.main label:has(> input#saving-for-next:checked) .box {
+  background: var(--orange);
+  border: 1px solid var(--orange);
+  transition: all 0.5s;
+}
+
+.main label:has(> input#saving-for-next) .check {
+  position: absolute;
+  display: none;
+  transition: all 0.5s;
+}
+
+.main label:has(> input#saving-for-next:checked) .check {
+  display: block;
+  color: white;
+  transition: all 0.5s;
+}
+
+.main .form button.submit {
+  margin-left: auto;
+  width: 10.375rem;
+  height: 3.375rem;
+  border: 1px solid var(--orange);
+  border-radius: 0.75rem;
+
+  color: white;
+  font: inherit;
+  background: var(--orange);
+}
+
+section.articles {
+  margin-top: 0.6875rem;
+  padding: 2.125rem 1.875rem 1.375rem 1.875rem;
+  width: 20.1875rem;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.75rem;
+  background: var(--gray-6);
+}
+
+section.articles .article {
+  margin-bottom: 2rem;
+  display: flex;
+  font-size: 1rem;
+}
+
+section.articles .article figure {
+  margin-right: 1.375rem;
+  width: 8.5rem;
+  height: 8.5rem;
+}
+
+section.articles .article figure img {
+  border-radius: 0.75rem;
+  width: 100%;
+  height: 100%;
+}
+
+section.articles .article .infos {
+  display: flex;
+  flex-direction: column;
+  justify-self: stretch;
+}
+
+section.articles .article .infos .title.name {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+section.articles .article .infos .price {
+  display: inline-flex;
+  align-items: center;
+}
+
+section.articles .article .infos .price strong {
+  margin-right: 0.625rem;
+  color: var(--orange);
+}
+
+section.articles .article .infos .price em {
+  font-size: 0.75rem;
+  text-decoration: line-through;
+}
+
+section.articles .article .infos .custom-field {
+  margin: auto 0 0 0;
+  padding: 0 0.75rem;
+  width: 8.375rem;
+  height: 3.25rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 0.75rem;
+  border: 1px solid var(--gray-3);
+  color: var(--gray-1);
+  box-sizing: border-box;
+}
+
+section.articles .article .infos .custom-field button {
+  padding: 0.0938rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 0;
+  appearance: none;
+}
+
+section.articles .article .infos .custom-field button:hover i {
+  color: white;
+  background: var(--orange);
+  transition: all 0.25s;
+}
+
+section.articles .article .infos .custom-field i {
+  margin: 0;
+  font-size: 1.3125rem;
+  color: var(--gray-3);
+}
+
+section.articles .article .infos .custom-field input {
+  padding: 0;
+  text-align: center;
+}
+
+section.articles .shipping,
+section.articles .total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--gray-4);
+}
+
+section.articles .shipping {
+  margin-top: 3.9375rem;
+}
+
+section.articles .shipping span {
+  margin-top: 0.6875rem;
+  margin-bottom: 0.5rem;
+}
+
+section.articles .total span {
+  margin-top: 0.9375rem;
+}
+
+section.articles span.cout {
+  margin-bottom: auto;
+  font-size: 14px;
+  text-align: right;
+}
+
+.footer {
+  margin-top: auto;
+  align-self: center;
+  color: #b9bdcf;
+  font-size: 14px;
+}
+
+.footer .username {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 1024px) {
+  .main .form {
+    gap: 4rem;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .title {
+    font-size: 0.875rem;
+  }
+
+  .main-container {
+    margin: 2rem 0.75rem 1.5rem;
+    font-size: 0.75rem;
+  }
+
+  .header {
+    margin-bottom: 1.3125rem;
+  }
+
+  .header .title {
+    font-size: 1.5rem;
+  }
+
+  .main {
+    margin-bottom: 6rem;
+  }
+  .main .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .main h2.title {
+    margin-bottom: 0.6875rem;
+  }
+
+  .contact-info,
+  .shipping-address {
+    width: 23.9375rem;
+  }
+
+  .main .custom-field {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  .main .custom-field:has(#address),
+  .main .custom-field:has(#city) {
+    margin-bottom: 0.6875rem;
+  }
+
+  .main .custom-field:has(#country),
+  .main .custom-field:has(#postal-code) {
+    width: 11.25rem;
+  }
+
+  .main .custom-field label {
+    margin-bottom: 0.3125rem;
+    font-size: 0.625rem;
+  }
+
+  .main .custom-field div {
+    padding: 0 0.625rem 0 0;
+    height: 2.5rem;
+  }
+
+  .main .custom-field i {
+    margin: 0.7rem 0.6563rem;
+    font-size: 1.125rem;
+  }
+
+  .main .custom-field i.arrow-down {
+    margin: auto;
+    right: 0.5rem;
+  }
+
+  .main .custom-select div {
+    padding-right: 0.25rem;
+  }
+
+  .main .custom-select select {
+    height: 2rem;
+    color: var(--gray-3);
+  }
+
+  .main label:has(> input#saving-for-next) {
+    font-size: 0.625rem;
+  }
+
+  .main label:has(> input#saving-for-next) .box {
+    margin-right: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .main label:has(> input#saving-for-next) .check {
+    font-size: 1.15rem;
+  }
+
+  .main section.articles {
+    order: -1;
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .main-container {
+    margin: 2rem 0rem 1.5rem;
+  }
+
+  .contact-info,
+  .shipping-address {
+    width: 21.82806rem;
+  }
+
+  .shipping-address {
+    margin-top: 1.8125rem;
+  }
+
+  .main .custom-field:has(#address),
+  .main .custom-field:has(#city) {
+    margin-bottom: 0.6875rem;
+  }
+
+  .main .custom-field:has(#country),
+  .main .custom-field:has(#postal-code) {
+    width: 10.1875rem;
+  }
+
+  .main .custom-field label {
+    margin-bottom: 0.3125rem;
+    font-size: 0.625rem;
+  }
+
+  .main .custom-field div {
+    padding: 0 0.625rem 0 0;
+    height: 2.5rem;
+  }
+
+  .main .custom-field i {
+    margin: 0.7rem 0.6563rem;
+    font-size: 1.125rem;
+  }
+
+  .main .custom-field i.arrow-down {
+    margin: auto;
+    right: 0.5rem;
+  }
+
+  .main .custom-select div {
+    padding-right: 0.25rem;
+  }
+
+  .main .custom-select select {
+    height: 2rem;
+    color: var(--gray-3);
+  }
+
+  .main label:has(> input#saving-for-next) {
+    font-size: 0.625rem;
+  }
+
+  .main label:has(> input#saving-for-next) .box {
+    width: 0.9375rem;
+    height: 0.9375rem;
+  }
+
+  .main section.articles {
+    padding: 1.91rem 1.65rem 1.4rem 1.65rem;
+    width: 18.575rem;
+  }
+
+  section.articles .article {
+    margin-bottom: 1.8125rem;
+  }
+
+  section.articles .article figure {
+    margin-right: 1.2rem;
+    width: 7.74rem;
+    height: 7.74rem;
+  }
+
+  section.articles .article .infos .title.name {
+    margin-bottom: 0.67rem;
+    font-size: 0.75rem;
+  }
+
+  section.articles .article .infos .price strong {
+    font-size: 0.875rem;
+  }
+
+  section.articles .article .infos .price em {
+    font-size: 0.75rem;
+  }
+
+  section.articles .article .infos .custom-field {
+    width: 7.67481rem;
+    height: 3.11606rem;
+  }
+
+  section.articles .shipping {
+    margin-top: 3.5rem;
+    font-size: 0.875rem;
+  }
+
+  section.articles .total {
+    font-size: 0.875rem;
+  }
+}
